@@ -6,27 +6,31 @@ import './Edit.css';
 
 export default class Edit extends Component {
   constructor( props ) {
-    super( props );
+    super( props )
 
     this.state = {
       text: props.text
-    };
+    }
 
-    this.updatePost = this.updatePost.bind( this );
+    this.updatePost = this.updatePost.bind( this )
   }
 
   updateText( value ) {
-    this.setState({ text: value });
+    this.setState({ text: value })
   }
 
   updatePost() {
-
+    const { text } = this.state
+    const { id, updatePostFn, hideEdit } = this.props
+  
+    updatePostFn( id, text )
+    hideEdit()
   }
 
   render() {
     // More destructuring!
-    const { hideEdit } = this.props;
-    const { text } = this.state;
+    const { hideEdit } = this.props
+    const { text } = this.state
 
     return (
       <section className="Edit__parent">
